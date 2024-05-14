@@ -1,0 +1,158 @@
+﻿<Page x:Class="Exam.View"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="550"
+      Background="White"
+	Title="View">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+            <Button Width="60" Content="home" x:Name="home" Click="home_Click_1" Margin="10 0 130 0" HorizontalAlignment="Left">
+                <Button.Resources>
+
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+
+                </Button.Resources>
+            </Button>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+             
+                <TextBlock Text="Exam Id:" Height="25" Width="80"/>
+                <TextBox Width="50" x:Name="Id"/>
+                <Button Margin="10 0" Width="50" Content="get" x:Name="get" Click="get_Click_1">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Line  Height="2" />
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding ExamType}" FontWeight="ExtraBold" FontSize="16" />
+              
+            </StackPanel >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Width="80" Height="25" FontWeight="SemiBold" Text="Max Mark:" FontSize="16"/>
+                <TextBlock Width="60" Height="25" FontWeight="SemiBold" Text="{Binding MaxMark}" FontSize="16" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="class:" Width="40" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="{Binding Class}" Width="40" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="batch:" Width="50" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="{Binding Batch}" Width="40" FontSize="16" FontWeight="SemiBold" />
+                <TextBlock Text="Subject Code:" Width="100" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="{Binding SubjectCode}" Width="70" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="Subject Name:" Width="110" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock Text="{Binding SubjectName}" FontSize="16" Width="140" FontWeight="SemiBold"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1" x:Name="parent">
+            <ScrollViewer >
+                <ListView ItemsSource="{Binding Section}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel>
+                                <Grid Margin="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                        </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions >
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="0">
+                                    <TextBlock  FontWeight="Bold" FontSize="12" Height="20" Text="Section "  HorizontalAlignment="Center"/>
+                                        <TextBlock  FontWeight="Bold" FontSize="12" Height="20" Text="{Binding SectionId}" Margin="0 0 60 0" />
+                                       
+                                        <TextBlock HorizontalAlignment="Left"  Height="20" FontWeight="Bold" Width="20" Text="{Binding Number_of_qustion}" Grid.Column="1"/>
+                                        <TextBlock HorizontalAlignment="Right" Height="20" FontWeight="Bold" Width="20" Text="X" />
+                                        <TextBlock HorizontalAlignment="Right" Height="20" FontWeight="Bold" Width="20" Text="{Binding Num_ans_need_question}" />
+                                        <TextBlock HorizontalAlignment="Right" Height="20" FontWeight="Bold" Width="10" Text="=" Grid.Column="1"/>
+                                        <TextBlock HorizontalAlignment="Right" Height="20" FontWeight="Bold" Width="20" Text="{Binding Total_mark_sec}" />
+                                        </StackPanel>
+                                   
+                                
+                                
+                                </Grid>
+                             
+                     
+                                <ListView ItemsSource="{Binding Qustion}">
+                                    <ListView.ItemTemplate>
+                                        
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Margin="20 5 0 0" FontWeight="Bold" FontSize="12" Height="20" Text="{Binding QustionNumber}"/>
+                                                <ListView ItemsSource="{Binding Qustions}">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Margin="20 5 0 0"  FontSize="12" Height="20" Text="{Binding  Qustion}"/>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </StackPanel>
+                                               
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    
+                                </ListView>
+
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </Grid>
+
+
+        <!--<ScrollViewer Grid.Row="1" >
+                <StackPanel>
+                    <StackPanel>
+                    <ItemsControl  x:Name="section_list">
+                    <ItemsControl.ItemTemplate >
+                        <DataTemplate>
+                             <StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                                <TextBlock Text="Section " FontWeight="Bold"/>
+                                        <TextBlock Width="10" Height="15" FontWeight="Bold" Text="{Binding  SectionId}"/>
+                                    
+                                 </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    
+                </ItemsControl>
+                 </StackPanel >
+                    <StackPanel >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding QustionNumber}" Width="15"  FontWeight="Bold"/>
+                        <ItemsControl x:Name="questionlist1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                                        <TextBlock Width="10" Text="{Binding SubQustionNumber}"/>
+                                        <TextBlock Width="200" Height="15" FontWeight="SemiBold" Text="{Binding Qustion}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+                     </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>-->
+       
+
+    </Grid>
+</Page>

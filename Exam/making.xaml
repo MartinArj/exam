@@ -1,0 +1,114 @@
+﻿<Page x:Class="Exam.making"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="850"
+      Background="White"
+	Title="making">
+
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+          
+
+
+                <Grid Grid.Column="0" x:Name="grid1">
+               
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <TextBlock Text="Section Number:" Width="100"/>
+                    <TextBlock Name="section_number_block" Width="40"/>
+                </StackPanel>
+                <Border BorderBrush="Aquamarine" BorderThickness="1,2.3,2,3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+                    <StackPanel  >
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Number of question" Height="20" Width="152"/>
+                            <TextBox Height="25" Width=" 80" Margin="10 0 0 0" Name="num_question"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Number of ans need qustion" Height="20"/>
+                            <TextBox Height="25" Width=" 80" Margin="10 0 0 0" Name="num_ans_question"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="One Question Mark " Width=" 152" Height="20"/>
+                            <TextBox Height="25" Width=" 80" Margin="10 0 0 0" Name="one_question_mark"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <StackPanel Grid.Row="2">
+                    <Button Width="60" Content="genarate" Margin="0 10 0 0" Name="genrate_section" Click="genrate_section_Click_1"/>
+                </StackPanel>
+                <Border Grid.RowSpan="3" BorderBrush="Green" BorderThickness="3 3 3 3" Visibility="Hidden" x:Name="part1"/>
+                    
+                
+            </Grid>
+            
+            <Grid Grid.Column="1" x:Name="grid2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+
+                </Grid.RowDefinitions>
+                <Border Grid.RowSpan="2" BorderBrush="Green" BorderThickness="3 3 3 3" Visibility="Hidden" x:Name="part2"/>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Aquamarine" BorderThickness="1,2.2,3.1,4" CornerRadius="10,20,30,20" Margin="0 5 0 5" Grid.Row="0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="qustion number" Width="130"/>
+                            <TextBlock Width="80" x:Name="QNum"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="number of subqustions" Width="130"/>
+                            <TextBox Width="80" Name="NSubQ"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="One qustion mark" Width="130"/>
+                            <TextBlock Width="80" x:Name="OneQN" />
+                        </StackPanel>
+                    </StackPanel>
+
+                </Border>
+                <Border Grid.Row="1">
+                    <Button Width="80" Height="20" Name="make" Content="make" Click="make_Click"/>
+                </Border>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="grid3">
+            <Border   BorderBrush="Green" BorderThickness="3 3 3 3" Visibility="Hidden" x:Name="part3"/>
+            <Border BorderBrush="Aquamarine" BorderThickness="2,3,1,2" CornerRadius="20,10,20,15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 10" Height="150"  Width="750" >
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="qustion number:" Width=" 120" />
+                        <TextBlock Name="sub_qustion_number"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="20 10 10 10">
+                        <TextBlock Text="qustion:" Width="80" HorizontalAlignment="Center"/>
+                        <TextBox Width="600" Height="40" FontWeight="SemiBold" Name="QuestionBox"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="20 0 0 10">
+                        <TextBlock Text="mark:" Width="130" HorizontalAlignment="Center"/>
+                        <TextBox Width="80" Height="25" Name="MarkBox"/>
+                        <Button Margin="10 0 0 0" Height="20" Width="60" Content="Next" Name="next_ques_btn" Click="next_ques_btn_Click_1"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+        
+    </Grid>
+    </Grid>
+</Page>
